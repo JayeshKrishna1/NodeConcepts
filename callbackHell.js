@@ -16,7 +16,12 @@ fs.readFile('C:\Users\Admin\Documents\pro\Web Tech\dummy\first.txt','utf-8',(err
             if(err){
                 console.log(err);
             }
-            console.log(res);
+            fs.readFile('../dummy/third.txt','utf-8',(err,res) => {
+                if(err){
+                    console.log(err);
+                }
+                console.log(res);
+            });
         });
     });
 });
