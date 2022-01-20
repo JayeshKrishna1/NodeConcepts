@@ -24,26 +24,29 @@ const writeFiles = (path) => {
     });
 };
 
-const startRead = async() =>{
+const start = async() =>{
     try {
         const first = await readFiles('../dummy/first.txt');
         const second = await readFiles('../dummy/second.txt');
+        const pathWrite = await writeFiles('../dummy/third.txt');
+        const third = await readFiles(pathWrite);
         console.log(first);
         console.log(second);
+        console.log(third);
     } catch (error) {
         console.log(error);
     }
 };
 
-const startWrite = async() =>{
-    try{
-        const pathWrite = await writeFiles('../dummy/third.txt');
-        const third = await readFiles(pathWrite);
-        console.log(third);
-    }
-    catch(err){
-        console.log(err);
-    }
-};
-startRead();
-startWrite();
+// const startWrite = async() =>{
+//     try{
+//         const pathWrite = await writeFiles('../dummy/third.txt');
+//         const third = await readFiles(pathWrite);
+//         console.log(third);
+//     }
+//     catch(err){
+//         console.log(err);
+//     }
+// };
+start();
+// startWrite();
