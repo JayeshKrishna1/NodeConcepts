@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const {people} = require('./data.js');
 
-app.use(express.static('./javaScriptExample'));
+app.use('/api/people',express.static('./javaScriptExample'));
 
 app.use(express.json()); // to parse the json data in req.body 
 
