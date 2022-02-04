@@ -1,0 +1,108 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: linear-gradient(120deg,red,yellow);
+    color: white;
+    font-family: "poppins",sans-serif;
+    min-height: 1000px;
+}
+
+header{
+    font-size: large;
+}
+
+header,form{
+    min-height: 100px;
+    justify-content: center;
+    align-items:center;
+    display: flex;
+}
+
+form input,form button{
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    background: rgb(228, 201, 201);
+}
+
+form button{
+    color: yellow;
+    background-color: red;
+    cursor: pointer;
+    transition: all 0.2sec ease;
+}
+
+form button:hover{
+    color: red;
+    background-color: yellow;
+}
+
+.todo-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.todo-list{
+    list-style: none;
+    min-width: 265px;
+}
+.todo{
+    margin: 10px;
+    /* min-height: 100px; */
+    background: white;
+    display: flex;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(0, 0, 0);
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+.todo li{
+    flex: 1;
+}
+.complete-button, .delete-button{
+    font-size: 1rem;
+}
+.complete-button{
+    background-color: rgb(7, 248, 27);
+    border: none;
+    padding: 0.5rem;
+    color: yellow;
+    cursor: pointer;
+    transition: all 0.3sec ease;
+}
+.delete-button{
+    background-color: red;
+    border: none;
+    padding: 0.5rem;
+    color: yellow;
+    cursor: pointer;
+    transition: all 0.3sec ease;
+}
+
+.complete-button:hover{
+    background-color: yellow;
+    color: green;
+}
+.delete-button:hover{
+    background-color: yellow;
+    color: red;
+}
+
+.todo-item{
+    padding: 0rem 0.5rem;
+}
+
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+.fa-clipboard-check , .fa-trash-alt{
+    pointer-events: none;
+}

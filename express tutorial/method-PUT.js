@@ -24,7 +24,7 @@ app.put('/api/people/:id',(req,res)=>{
     const {name} = req.body;
 
     const idCheck = people.find((eachPeople) =>{
-        return eachPeople.id === Number(id);
+        return eachPeople.id === Number(id); // return is must coz after looping through every obj it should compare and return if the condition matches
         // console.log(eachPeople);
     });
     console.log(idCheck);
@@ -35,24 +35,12 @@ app.put('/api/people/:id',(req,res)=>{
         if(eachObj.id === Number(id)){
             eachObj.name = name;
         }
-        return eachObj;
+        return eachObj; // return must coz after looping what should it do?
     });
     console.log(newPeople);
     res.json({success : true ,data : newPeople});
 })
 
-app.delete('/api/people/:id',(req,res)=>{
-    console.log(req.params);
-    const {id} = req.params;
-    const idCheck = people.find((eachObj)=> eachObj.id === Number(id));
-    if(!idCheck){
-        return res.status(404).json({success : 'true', data : `cant find any data with ${id}`});
-    }
-    const newPeople = people.filter((eachObj)=>{
-        return eachObj.id !== Number(id);
-    });
-    res.json({success : 'true', data : newPeople});
-})
 app.listen(5000,()=>{
     console.log('server is listening to port 5000....');
-});
+})

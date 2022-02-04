@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>Form</h1>
+    <form>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="input" autocomplete="off">
+        <button type="submit" class="btn">Submit</button>
+    </form>
+    <div id="para"></div>
+    
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+    integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    const input = document.querySelector('#input');
+    const button = document.querySelector('.btn');
+    const div = document.querySelector('#para');
+   
+    function getReq(){
+    axios({
+        method : 'get',
+        url : '/api/people'
+    }).then(res => showNames(res)).catch(err => console.log(err));
+ }
+    getReq();
+    
+    function showNames(res){
+        console.log(res);
+        const names = res.data.map((eachObj)=>{
+            const {name} = eachObj;
+            return {name};
+        });
+        console.log(names);
+        names.map((Eachname)=>{
+        const para = document.createElement('p');
+        para.classList.add('name');
+        para.innerText = Eachname.name;
+        div.appendChild(para);
+    })
+    }
+    
+    button.addEventListener("click",addNames);
+
+    function addNames(event){
+
+    event.preventDefault();
+    console.log(input.value);
+
+    axios({
+        method : 'post',
+        url : '/',
+        data : {name : input.value}
+    }).then(res => {
+        console.log(res.data);
+        const name = document.createElement('p');
+    name.classList.add('name');
+    name.innerText = res.data;
+
+   div.appendChild(name);
+    });
+
+//     const name = document.createElement('p');
+//     name.classList.add('name');
+//     name.innerText = input.value;
+
+//    div.appendChild(name);
+}
+
+axios({
+    method : 'put',
+    url : '/api/people',
+    data : {name : jayesh}
+}).then(res => console.log(res));
+
+  
+</script>
+    <!-- <script src="axios.js"></script> -->
+</body>
+</html>
